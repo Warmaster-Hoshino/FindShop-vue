@@ -8,7 +8,8 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 export default defineConfig({
   plugins: [
     vue(),
-    vueDevTools(),
+    // 生产环境不启用 vueDevTools
+    ...(process.env.NODE_ENV === 'production' ? [] : [vueDevTools()]),
   ],
   resolve: {
     alias: {
